@@ -33,11 +33,13 @@ def insert(self,data):
     # If self.data is None, then insert the data
         self.data = data
 
+
+
 # Level Order Traversal: BFS
-def BFS(self) -> List[List[int]] | None:
+def BFS(self) -> List[List[int]]:
     # If root is None, then return None
     if self is None:
-        return None
+        return
     
     # ans is for storing the list of levels
     ans = []
