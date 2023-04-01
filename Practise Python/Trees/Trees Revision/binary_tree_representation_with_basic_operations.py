@@ -6,7 +6,7 @@ class Node:
         self.right = None
         self.data = data
     
-# Inserting a node in the tree
+# Inserting a node in the Binary Search tree
 def insert(self,data):
     # If self.data is not None
     if self.data:
@@ -45,7 +45,8 @@ def get_inorder_successor(self):
     while(current.left is not None):
         current = current.left
     return current
-        
+
+# Deleting a node from the Binary Search Tree
 def delete_node(self,data):
     # if self (root) is None, then return self
     if self is None:

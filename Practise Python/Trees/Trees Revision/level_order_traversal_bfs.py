@@ -8,7 +8,7 @@ class Node:
         self.right = None
         self.data = data
     
-# Inserting a node in the tree
+# Inserting a node in the Binary Search tree
 def insert(self,data):
     # If self.data is not None
     if self.data:
