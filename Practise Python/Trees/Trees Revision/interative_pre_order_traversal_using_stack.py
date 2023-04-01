@@ -1,3 +1,5 @@
+from typing import List
+
 # Created a class Node with init function, 
 # We can use this class to create a node with data and left and right child as None
 class Node:
@@ -30,17 +32,33 @@ def insert(self,data):
     # If self.data is None, then insert the data
         self.data = data
 
-
-        
-# Preorder Traversal: Root, Left, Right
-def print_pre_order_tree(self):
-    if self:
-    # Root, Left, Right
-        print(self.data, end="  ")
-        print_pre_order_tree(self.left)
-        print_pre_order_tree(self.right)
+# Iterative Preorder Traversal using Stack : Root, Left, Right
+def iterative_pre_order(self) -> List[int]:
+    if self is None:
+        return
     
-        
+    # Create an empty list to store the result
+    ans = []
+    # Create an empty stack and push root to it
+    stack = []
+    stack.append(self)
+    
+    # Loop while stack is not empty
+    while(len(stack) > 0):
+        # Pop an item from stack and add it to the list
+        # For stack, we are using pop() function but for queue, we are using popleft() or pop(0)
+        node = stack.pop()
+        ans.append(node.data)
+        # Push right and left child of the popped node to the stack
+        # Note that right child is pushed first so that left is processed first
+        # This is because we are using a stack and we want to process the left subtree first
+        # Since the Stack is LIFO, we want to process the left subtree first
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
+    # Return the ans list   
+    return ans
 
 root = Node(1)
 insert(root,6)
@@ -54,7 +72,5 @@ insert(root,9)
 insert(root,7)
 
 
-
-print("\nPrinting Pre Order Traversal using Recursion:")
-print_pre_order_tree(root)
-
+print("\nPrinting Pre Order Traversal using Iterative Method:")
+print(iterative_pre_order(root))

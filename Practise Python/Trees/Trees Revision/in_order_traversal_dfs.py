@@ -51,5 +51,5 @@ insert(root,9)
 insert(root,7)
 
 # Inorder Traversal: Left, Root, Right
-print("Printing Inorder Traversal")
+print("Printing Inorder Traversal using Recursion:")
 print_inorder_tree(root)
