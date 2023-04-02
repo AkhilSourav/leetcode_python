@@ -8,6 +8,9 @@ class Node:
     
 # Inserting a node in the Binary Search tree
 def insert(self,data):
+    if self is None:
+        return
+    
     # If self.data is not None
     if self.data:
         # If data is less than self.data, then insert it in the left subtree
@@ -26,9 +29,6 @@ def insert(self,data):
                 # If self.right is not None, then insert the data in the right subtree
             else:
                 insert(self.right,data)
-    else:
-    # If self.data is None, then insert the data
-        self.data = data
 
 
         

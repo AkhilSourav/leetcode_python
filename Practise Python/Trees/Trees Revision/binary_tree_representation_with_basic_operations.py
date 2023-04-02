@@ -8,6 +8,9 @@ class Node:
     
 # Inserting a node in the Binary Search tree
 def insert(self,data):
+    if self is None:
+        return
+    
     # If self.data is not None
     if self.data:
         # If data is less than self.data, then insert it in the left subtree
@@ -26,9 +29,6 @@ def insert(self,data):
                 # If self.right is not None, then insert the data in the right subtree
             else:
                 insert(self.right,data)
-    else:
-    # If self.data is None, then insert the data
-        self.data = data
 
 
 # Inorder Traversal: Left, Root, Right
@@ -46,16 +46,27 @@ def get_inorder_successor(self):
         current = current.left
     return current
 
+# Finding the Inorder Predecessor ( Largest value in the left subtree )
+def get_inorder_predecessor(self):
+    current = self
+    while current.right is not None:
+        current = current.right
+    return current
+
+
 # Deleting a node from the Binary Search Tree
 def delete_node(self,data):
     # if self (root) is None, then return self
     if self is None:
-        return self
+        return
     
     # If data is less than self.data, then delete the node from the left subtree
+    # We are assigning back to self.left because after deleting the node, the left subtree will be changed
     if data < self.data and self.left is not None:
         self.left = delete_node(self.left,data)
+        
     # If data is greater than self.data, then delete the node from the right subtree
+    # We are assigning back to self.right because after deleting the node, the right subtree will be changed
     elif data > self.data and self.right is not None:
         self.right = delete_node(self.right,data)
     
@@ -73,12 +84,23 @@ def delete_node(self,data):
         
         # Case for when node has 2 children
         # Get the ( left most node ) inorder successor in the right subtree
+        # We can also do, get the ( right most node ) inorder predecessor in the left subtree
         temp = get_inorder_successor(self.right)
+        """temp = get_inorder_predecessor(self.left)"""
         # Assign the inorder successor value to self.data
+        # Note: We are just replacing the value of the node to be deleted with the inorder successor value and not the node itself
+        # Because if we do so, then we will lose the connections with the left and right subtree 
         self.data = temp.data
-        # Delete the inorder successor node in the right subtree
+        # So once job is done, we have to delete the inorder successor node from the right subtree
+        # We are assigning back to self.right because after deleting the node, the right subtree will be changed
         self.right = delete_node(self.right,temp.data)
+        """self.left = delete_node(self.left,temp.data)"""
+    
+    # Return self(root) once all the operations are done
     return self
+
+
+
 
 # Creating a root node with data 60     
 root = Node(60)
@@ -96,7 +118,7 @@ print_inorder_tree(root)
 print("Before deleting a node")
 
 # Deleting a node from the tree
-delete_node(root,90)
+root = delete_node(root,40)
 print_inorder_tree(root)
 print(" After deleting a node")
 
