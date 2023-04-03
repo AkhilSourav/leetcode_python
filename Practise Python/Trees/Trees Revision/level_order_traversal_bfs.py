@@ -92,12 +92,12 @@ insert(root,9)
 insert(root,7)
 
 # Printing Level Order Traversal
-#       1
-#       6
-#      2 10
-#      3  8
-#    4  7  9
-#       5
+#          1
+#             6
+#      2            10
+#       3         8
+#         4     7   9
+#           5
 print("Level Order Traversal: BFS")
 print(BFS(root))    
 
