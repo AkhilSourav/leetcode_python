@@ -33,13 +33,19 @@ def insert(self,data):
                 insert(self.right,data)
 
 
-
-# Level Order Traversal: BFS
-def BFS(self) -> List[List[int]]:
+# Same as level_order_traversal_bfs.py but with a slight change
+# We need to create a flag and update it whenever a new level is encountered
+# If the flag is 0, then append the level list to the ans list
+# If the flag is 1, then append the reversed level list to the ans list                
+def zig_zag_traversal(self) -> List[List[int]]:
     # If root is None, then return None
     if self is None:
         return []
     
+    # flag is for keeping track of the level whenever it changes
+    # If flag is 0, then append the level list to the ans list
+    # If flag is 1, then append the reversed level list to the ans list
+    flag = 0
     # ans is for storing the list of levels
     ans = []
     # queue is a list of nodes
@@ -69,17 +75,19 @@ def BFS(self) -> List[List[int]]:
             # Decrement the size
             size -= 1
             
-        # Append the level list to the ans list
-        ans.append(level)
+        # Append the level list to the ans list based on the flag
+        if flag == 0:
+            ans.append(level)
+            flag = 1
+        else:
+            # If the flag is 1, then append the reversed level list to the ans list
+            # [::-1] is used to reverse elements in the list
+            ans.append(level[::-1])
+            flag = 0
     
     # Return the ans list with all the nodes at each level
     return ans
-            
-            
-            
-            
-            
-            
+
 root = Node(1)
 insert(root,6)
 insert(root,2)
@@ -91,13 +99,5 @@ insert(root,5)
 insert(root,9)
 insert(root,7)
 
-# Printing Level Order Traversal
-#          1
-#             6
-#      2            10
-#       3         8
-#         4     7   9
-#           5
-print("Level Order Traversal: BFS")
-print(BFS(root))    
-
+# Print the zig zag traversal of the binary tree
+print(zig_zag_traversal(root))
