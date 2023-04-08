@@ -1,5 +1,3 @@
-
-
 # Created a class Node with init function, 
 # We can use this class to create a node with data and left and right child as None
 class Node:
