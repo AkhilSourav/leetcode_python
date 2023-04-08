@@ -63,7 +63,7 @@ def KthLargestUtil(self, c, k):
     if self == None or c[0] >= k:
         return
     
-    # Recur for right subtree 
+    # Recur for right subtree first
     KthLargestUtil(self.right, c, k)
     
     # Increment count of visited nodes
