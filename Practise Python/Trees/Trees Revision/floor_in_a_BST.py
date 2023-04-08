@@ -30,29 +30,28 @@ def insert(self,data):
             else:
                 insert(self.right,data)
 
-# Find the ceil of a given key in a BST
-def find_ceil(self, key):
-    ceil = -1
+# Find the floor of a given key in a BST
+def find_floor(self, key):
+    floor = -1
     
     while(self):
         # If key is equal to self.data, then return self.data
         if self.data == key:
-            ceil = self.data
-            return ceil
+            floor = self.data
+            return floor
         
-        # If key is greater than self.data, then ceil must be in the right subtree
-        if key > self.data:
-            self = self.right
-        
-        # If key is smaller than self.data, then ceil must be in the left subtree
-        # Update the ceil to self.data and then search in the left subtree
-        else:
-            ceil = self.data
+        # If key is less than self.data, then floor must be in the left subtree
+        if key < self.data:
             self = self.left
+        
+        # If key is greater than self.data, then floor must be in the right subtree
+        # Update the floor to self.data and then search in the right subtree
+        else:
+            floor = self.data
+            self = self.right
     
-    return ceil
-    
-    
+    return floor
+
 root = Node(60)
 insert(root,40)
 insert(root,80)
@@ -61,6 +60,6 @@ insert(root,50)
 insert(root,70)
 insert(root,90)
 
-key = 45
-# Print the ceil of a given key in a BST
-print(f"The ceil of given key is {find_ceil(root,key)}")
+key = 39
+# Print the floor of a given key in a BST
+print(f"The floor of given key is {find_floor(root,key)}")
