@@ -33,17 +33,22 @@ def insert(self,data):
             else:
                 insert(self.right,data)
 
+# Finding the Lowest Common Ancestor of two nodes in a Binary Search Tree
+# Time Complexity: O(h) where h is the height of the tree = Log(n)
 def LCA_in_a_BST(self,n1,n2) -> Union[int , None]:
     if self is None:
         return None
     
     cur = self.data
     
+    # If both n1 and n2 are smaller than cur, then LCA lies in the left subtree
     if(cur > n1.data and cur > n2.data):
         return LCA_in_a_BST(self.left,n1,n2)
+    # If both n1 and n2 are greater than cur, then LCA lies in the right subtree
     if(cur < n1.data and cur < n2.data):
         return LCA_in_a_BST(self.right,n1,n2)
-    return self.data
+    # If both n1 and n2 are not smaller than cur and not greater than cur, then cur is the LCA
+    return cur
     
 
 root = Node(1)
@@ -62,8 +67,12 @@ insert(root,7)
 #       3         8
 #         4     7   9
 #           5
-n1 = Node(7)
+
+# Creating two nodes
+n1 = Node(1)
 n2 = Node(5)
+
+# Printing the Lowest Common Ancestor of n1 and n2
 print(f"Lowest Common Ancestor of {n1.data} and {n2.data} is {LCA_in_a_BST(root,n1,n2)}")
 
 
