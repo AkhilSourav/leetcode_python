@@ -76,10 +76,6 @@ def BFS(self) -> List[List[int]]:
     return ans
             
             
-            
-            
-            
-            
 root = Node(1)
 insert(root,6)
 insert(root,2)
