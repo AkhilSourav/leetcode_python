@@ -1,5 +1,3 @@
-from typing import List
-
 # Created a class Node with init function, 
 # We can use this class to create a node with data and left and right child as None
 class Node:
@@ -32,24 +30,24 @@ def insert(self,data):
             else:
                 insert(self.right,data)
 
-# Vertical Order Traversal
-def vertical_order_traversal(self) -> List[List[int]]:
+def vertical_order_traversal(self):
     # If root is None, then return None
     if self is None:
         return []
     
     # ans is for storing the list of levels
-    ans = {}
+    ans = []
     # queue is a list of nodes
     queue = []
-    # Append the root node to the queue
-    queue.append(self)
-    
-    level_count = 1
+    # h_level is for storing the horizontal level of the node
+    h_level = 0
+    # v_level is for storing the vertical level of the node
+    v_level = 0
+    # Append the root node to the queue {node, horizontal_distance, vertical_distance}
+    queue.append([self,h_level,v_level])
     
     # While the queue is not empty
     while(len(queue) > 0):
-        
         # level will store all the nodes at a particular level
         level = []
         # size will store the number of nodes at a particular level
@@ -58,25 +56,59 @@ def vertical_order_traversal(self) -> List[List[int]]:
         # While there are nodes at a particular level
         while(size > 0):
             # Pop the first node from the queue and store it in node
-            node = queue.pop(0)
+            data_pack = queue.pop(0)
+            # Data pack is a list of [node, horizontal_distance, vertical_distance]
+            node = data_pack[0]
+            h_level = data_pack[1]
+            v_level = data_pack[2]
+            # Append the data of the node to the level list
+            level.append([node.data,h_level,v_level])
+            
             # If the left child of the node is not None, then append it to the queue
             if node.left:
-                queue.append(node.left)
+                h_left = h_level + 1
+                v_left = v_level - 1
+                data_keeper = [node.left,h_left,v_left]
+                queue.append(data_keeper)
             # If the right child of the node is not None, then append it to the queue
             if node.right:
-                queue.append(node.right)
-            # Append the data of the node to the level list
-            level.append(node.data)
+                h_right = h_level + 1
+                v_right = v_level + 1
+                data_keeper = [node.right,h_right,v_right]
+                queue.append(data_keeper)
+                
+            
             # Decrement the size
             size -= 1
             
         # Append the level list to the ans list
-        ans.update({level_count: level})
-        level_count += 1
+        ans.extend(level)
     
     # Return the ans list with all the nodes at each level
     return ans
 
+def get_vertical_order(self):
+    answer = vertical_order_traversal(self)
+    # print(answer)
+    
+    # my_dict is a dictionary with key as vertical level and value as list of nodes at that level
+    my_dict = {}
+    for ans in answer:
+        # pop always takes last element
+        key = ans.pop()
+        my_dict.setdefault(key, [])
+        # pop(0) always take first element
+        my_dict[key].append(ans.pop(0))
+    
+    # print(my_dict)
+    
+    ans_list = []
+    for value in my_dict:
+    # extend is used here because we want to merge two values [value1,value2]
+    # If we would have used append then output is [{value1},{value2}]
+        ans_list.extend(my_dict[value])
+    
+    return ans_list
 
 
 root = Node(1)
@@ -90,5 +122,5 @@ insert(root,5)
 insert(root,9)
 insert(root,7)
 
-print("Vertical Order Traversal: ")
-print(vertical_order_traversal(root))    
+print(f"Vertical Order Traversal: {get_vertical_order(root)}")
+  
