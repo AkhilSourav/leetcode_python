@@ -95,8 +95,9 @@ def get_vertical_order(self):
         
         
         my_dict.setdefault(key, [])
-        # TOP VIEW CONDITION OF A BINARY TREE
+    # TOP VIEW CONDITION OF A BINARY TREE #
         # If the list is empty, then only append the node to the list
+        # This is done, so that only first value for that level gets stored
         if len(my_dict[key]) == 0:
             # pop(0) takes first element out
             my_dict[key].append(ans.pop(0))
