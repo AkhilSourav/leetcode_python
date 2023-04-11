@@ -94,15 +94,15 @@ def get_vertical_order(self):
         key = ans.pop()
         
         my_dict.setdefault(key, [])
-
+    
         my_dict[key].append(ans.pop(0))
     
     # print(my_dict)
     
     ans_list = []
     for key in my_dict:
-        # TOP VIEW CONDITION OF A BINARY TREE #
-        ans_list.append(my_dict[key][0])
+        # BOTTOM VIEW CONDITION OF A BINARY TREE #
+        ans_list.append(my_dict[key][-1])
     
     return ans_list
 
@@ -118,5 +118,5 @@ insert(root,5)
 insert(root,9)
 insert(root,7)
 
-print(f"Top View of Binary Tree: {get_vertical_order(root)}")
+print(f"Bottom View of Binary Tree: {get_vertical_order(root)}")
   
