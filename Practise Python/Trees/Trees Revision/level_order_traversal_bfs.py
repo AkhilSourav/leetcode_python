@@ -51,7 +51,7 @@ def BFS(self) -> List[List[int]]:
     while(len(queue) > 0):
         # level will store all the nodes at a particular level
         level = []
-        # size will store the number of nodes at a particular level
+        # size will store the length of number of nodes at a particular level
         size = len(queue)
         
         # While there are nodes at a particular level
@@ -93,7 +93,7 @@ insert(root,7)
 #               6
 #          2        10
 #              3,8
-#          7        4,9
+#          4        7,9
 #                         5
 print("Level Order Traversal: BFS")
 print(BFS(root))    

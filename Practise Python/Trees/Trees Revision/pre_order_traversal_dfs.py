@@ -33,12 +33,12 @@ def insert(self,data):
 
         
 # Preorder Traversal: Root, Left, Right
-def print_pre_order_tree(self):
+def pre_order_traversal(self):
     if self:
     # Root, Left, Right
         print(self.data, end="  ")
-        print_pre_order_tree(self.left)
-        print_pre_order_tree(self.right)
+        pre_order_traversal(self.left)
+        pre_order_traversal(self.right)
     
         
 
@@ -56,5 +56,5 @@ insert(root,7)
 
 
 print("\nPrinting Pre Order Traversal using Recursion:")
-print_pre_order_tree(root)
+pre_order_traversal(root)
 

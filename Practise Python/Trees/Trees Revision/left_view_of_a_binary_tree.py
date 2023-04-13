@@ -49,7 +49,7 @@ def horizontal_order_traversal(self):
     while(len(queue) > 0):
         # level will store all the nodes at a particular level
         level = []
-        # size will store the number of nodes at a particular level
+        # size will store the length of number of nodes at a particular level
         size = len(queue)
         
         # While there are nodes at a particular level
