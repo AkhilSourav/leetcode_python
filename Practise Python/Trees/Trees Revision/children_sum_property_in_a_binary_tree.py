@@ -84,7 +84,7 @@ def modified_preorder_traversal(root):
 # Function to return satisfied children sum property binary tree
 def children_sum_property_satisfied(root):
     modified_preorder_traversal(root)
-    print(f"Children Sum Property {BFS(root)}")
+    print(f"Printing satisfied Children Sum Property Binary Tree {BFS(root)}")
 
   
 # Inserting a node in the Binary Search tree
