@@ -134,12 +134,12 @@ insert(root,5)
 insert(root,9)
 insert(root,7)
 
-#          1
-#               6
-#          2        10
-#              3,8
-#          4   7     9
-#              5
+#                     1
+#                             6
+#               2             |        10
+#                   3         |    8
+#                       4     |7       9
+#                           5 |
 
 """Note: Using the same logic from print_all_nodes_at_a_distance_K_in_a_binary_tree.py"""
 target = 5
