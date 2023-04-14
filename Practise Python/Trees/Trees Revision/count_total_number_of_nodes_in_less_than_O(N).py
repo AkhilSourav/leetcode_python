@@ -38,9 +38,14 @@ def count_total_nodes(self):
     lh = get_height(self.left,0)
     rh = get_height(self.right,1)
     
+    # If lh and rh are equal, then it is a complete binary tree
+    # So, we can use the formula 2^h - 1 to get the total number of nodes
+    # where h is the height of the tree
     if lh==rh:
         return (2**lh) - 1
     
+    # If lh and rh are not equal, then it is not a complete binary tree
+    # So, we will recursively call the function for left and right subtree
     return 1 + count_total_nodes(self.left) + count_total_nodes(self.right)
 
 
