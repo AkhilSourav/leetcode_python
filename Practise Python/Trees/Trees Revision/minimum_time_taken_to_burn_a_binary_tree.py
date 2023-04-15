@@ -97,7 +97,7 @@ def minimum_time_taken_to_burn_a_binary_tree(self, target):
     
     # We will traverse the tree till we reach the level k
     # Below code is same as level_order_traversal_bfs.py
-    while(len(queue) > 0):
+    while queue:
         size = len(queue)
         while(size > 0):
             cur = queue.pop(0)

@@ -26,7 +26,7 @@ def BFS(self) -> List[List[int]]:
     queue.append(self)
     
     # While the queue is not empty
-    while(len(queue) > 0):
+    while queue:
         # level will store all the nodes at a particular level
         level = []
         # size will store the length of number of nodes at a particular level

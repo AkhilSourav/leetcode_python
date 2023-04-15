@@ -110,7 +110,7 @@ def print_all_nodes_at_a_distance_K_from_a_given_target(self, target, k ):
         
     # Storing the nodes at a distance k from the target node
     final_ans = []
-    while(len(queue) > 0):
+    while queue:
         final_ans.append(queue.pop(0).data)
     
     print(final_ans)

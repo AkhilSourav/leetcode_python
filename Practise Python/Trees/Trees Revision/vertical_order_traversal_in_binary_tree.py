@@ -47,7 +47,7 @@ def vertical_order_traversal(self):
     queue.append([self,h_level,v_level])
     
     # While the queue is not empty
-    while(len(queue) > 0):
+    while queue:
         # level will store all the nodes at a particular level
         level = []
         # size will store the length of number of nodes at a particular level

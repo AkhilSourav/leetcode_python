@@ -15,7 +15,7 @@ def BFS(self) -> List[List[int]]:
     queue = []
     queue.append(self)
     
-    while(len(queue) > 0):
+    while queue:
         level = []
         size = len(queue)
         
