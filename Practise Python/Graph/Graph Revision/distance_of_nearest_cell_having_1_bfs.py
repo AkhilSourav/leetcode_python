@@ -6,6 +6,7 @@ def BFS(distance, visited, grid):
         for j in range(len(grid[0])):
             if grid[i][j] == 1:
                 visited[i][j] = True
+                # Inserting the node (i,j) and distance 0 in the queue
                 queue.append(((i, j), 0))
     
     
@@ -45,15 +46,12 @@ def get_distance_matrix(grid):
         print(row)
 
 
-
-
 # Given Grid
 grid = [
     [0, 0, 0, 1],
     [0, 0, 1, 1],
     [0, 1, 1, 0]
     ]
-
 
 
 """ NOTE : MultiSource BFS"""
