@@ -35,16 +35,21 @@ def check_for_cycle(graph):
     for i in range(graph.num_vertices):
         if visited[i] == False:
             if detect_cycle_using_dfs(i, visited, path_visited, graph) == True:
-                return True
+                return True  
     return False
 
 
-# edges = [(1,2),(2,3),(3,4),(4,5),(5,6),(3,7),(7,5),(8,2),(8,9),(9,10),(10,8)]
-edges = [(0,1),(1,2),(2,0),(2,3),(3,3)]
+
+edges = [(1,2),(2,3),(3,4),(4,5),(5,6),(3,7),(7,5),(8,2),(8,9),(9,10),(10,8)]
 
 num_vertices = max(max(edges)) + 1
 
 graph = Graph(num_vertices)
+
+for edge in edges:
+    graph.add_edge(edge[0], edge[1])
+
+
 
 
 """ Note: Detecting cycle in a directed graph is different from detecting cycle in an undirected graph.
